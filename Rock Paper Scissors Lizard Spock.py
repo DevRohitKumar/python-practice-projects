@@ -7,8 +7,8 @@ def clear():
  
 def rpsls():
      
-    global rpsls_table
-    global game_map
+    global win_loose_matrix
+    global game_options
     
     # Game Loop for each game of Rock-Paper-Scissors-Lizard-Spock
     while True:
@@ -23,7 +23,7 @@ def rpsls():
         print()
  
         # Player Input
-        inp = input("Enter your move : ")
+        inp = input("Enter your move: ")
  
         if inp.lower() == "exit":
             clear()
@@ -46,9 +46,9 @@ def rpsls():
  
         comp_move = random.randint(0, 4)
       
-        print("Computer chooses:", game_map[comp_move].upper())
+        print("Computer chooses:", game_options[comp_move].upper())
  
-        winner = rpsls_table[player_move][comp_move]
+        winner = win_loose_matrix[player_move][comp_move]
         print()
         if winner == player_move:
             print("Congratulations! You win!")
@@ -65,10 +65,19 @@ def rpsls():
 if __name__ == '__main__':
  
     # The mapping between moves and numbers
-    game_map = {0:"rock", 1:"paper", 2:"scissors", 3:"lizard", 4:"Spock"}
+    game_options = {0:"rock",
+                1:"paper",
+                2:"scissors",
+                3:"lizard",
+                4:"Spock"}
  
     # Win-lose matrix
-    rpsls_table = [[-1, 1, 0, 0, 4],[1, -1, 2, 3, 1], [0, 2, -1, 2, 4], [0, 3, 2, -1, 3], [4, 1, 4, 3, -1]]
+    win_loose_matrix = [[-1, 1, 0, 0, 4],
+                   [1, -1, 2, 3, 1],
+                   [0, 2, -1, 2, 4],
+                   [0, 3, 2, -1, 3],
+                   [4, 1, 4, 3, -1]
+                   ]
  
     # The GAME LOOP
     while True:
