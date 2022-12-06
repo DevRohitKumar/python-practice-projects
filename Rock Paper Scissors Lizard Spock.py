@@ -1,3 +1,4 @@
+# let's play 🪨📰✂️🦎🖖
 import random
 import os
 import time
