@@ -52,10 +52,10 @@ def rpsls():
         winner = win_loose_matrix[player_move][comp_move]
         print()
         if winner == player_move:
-            print("Congratulations! You win!")
+            print("Congratulations! You win! 🥳 ")
         elif winner == comp_move:
             com_win_choices = ["Oops!", "Sorry!"]
-            print(random.choice(com_win_choices)+" COMPUTER WIN!!!")
+            print(random.choice(com_win_choices)+" COMPUTER WIN!😥 ")
         else:
             print("Game Ties!")       
         print()
