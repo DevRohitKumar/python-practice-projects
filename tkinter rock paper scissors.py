@@ -12,7 +12,6 @@ win.minsize(350, 370)
 win.maxsize(350, 370)
 win.config(background="light grey")
 
-
 rps_choices = ["rock", "paper", "scissors"]
 user_score, com_score, tie_score = 0, 0, 0
 
@@ -41,7 +40,6 @@ def play_rps():
    else:
       com_win()
    
-
 def user_win():
    global user_score, com_score, tie_score
    user_score += 1
@@ -64,31 +62,29 @@ def update_scoreboard(user_score, com_score, tie_score):
    msg = "💻: "+str(com_score)+"\t🤵: "+str(user_score)+"\t🏴: "+str(tie_score)
    score_board.config(text= msg)
 
+x = IntVar()
 
-# Create list of images. we cannot use PhotoImage directly inside
-# radio button loop, for now at least.
-rps_images = []
-for choice in rps_choices:      
-   image = Image.open(choice+'.png')
+for r in range(len(rps_choices)):
+   item_name = rps_choices[r]
+   path = item_name+".png"
+   
+   image = Image.open(path)
    resized_image = image.resize((100, 100))
    final_image = ImageTk.PhotoImage(resized_image)
-   rps_images.append(final_image)
-
-# generating radio buttons with respective images
-x = IntVar()
-for r in range(len(rps_choices)):
+   
    radiobtn = Radiobutton(win,
-                        text=rps_choices[r].capitalize(),
+                        text=item_name.capitalize(),
                         variable=x,
                         value=r,
-                        font=("Noto Sans", 20),
-                        image= rps_images[r],
+                        image=final_image,
                         width=350,
                         compound= 'right',
                         indicatoron = 0,
-                        command=play_rps
+                        command=play_rps,
+                        font=("Noto Sans", 20),
                         )
-   radiobtn.pack(anchor=NE)
+   radiobtn.pack(anchor=E)
+   radiobtn.image = final_image # save the reference of the image
 
 
 win.mainloop()
