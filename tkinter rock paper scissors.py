@@ -8,8 +8,7 @@ win.title("Rock Paper Scissors")
 icon = ImageTk.PhotoImage(file = "rps_img.jpg")
 win.iconphoto(False, icon)
 win.geometry("350x370")
-win.minsize(350, 370)
-win.maxsize(350, 370)
+win.resizable(0, 0)
 win.config(background="light grey")
 
 rps_choices = ["rock", "paper", "scissors"]
@@ -67,7 +66,6 @@ x = IntVar()
 for r in range(len(rps_choices)):
    item_name = rps_choices[r]
    path = item_name+".png"
-   
    image = Image.open(path)
    resized_image = image.resize((100, 100))
    final_image = ImageTk.PhotoImage(resized_image)
